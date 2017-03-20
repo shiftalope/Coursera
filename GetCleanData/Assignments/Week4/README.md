@@ -1,11 +1,11 @@
-++Purpose
+##Purpose
 The run_analysis.R ode for compiling Samsung accelerometer and gyroscope data
 to create a tiny dataset that lists the average values of the means
 and standard deviations of various measurements across 30 subjects and
 6 activities. Requires the UCI_HAR_Dataset folder to be in the working directory
 Outputs a text file with the tiny dataset
 
-++Method
+##Method
 First the code construct a data frame from both the testing and training samples.
 The ID numbers are linked with the type (train vs test) via the "subject" files
 The various mesurements are extracted from the files found in "Inertial Signals" sub folder
