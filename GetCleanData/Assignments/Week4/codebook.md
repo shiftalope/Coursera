@@ -14,6 +14,7 @@ activity = What physical activity the subject was doing at the time of the measu
 Body Acceleration Mean and STD Averages (units of g)
 
 ==================
+
 bodyaccxmean = Average value of the body acceleration in the x direction
 
 bodyaccxstd = Average value of the standard deviation of body acceleration in the x direction
