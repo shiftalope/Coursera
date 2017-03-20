@@ -10,7 +10,9 @@ type = Training Experiment or Testing Experiment
 activity = What physical activity the subject was doing at the time of the measurement
 
 =================
+
 Body Acceleration Mean and STD Averages (units of g)
+
 ==================
 bodyaccxmean = Average value of the body acceleration in the x direction
 
@@ -23,11 +25,15 @@ bodyaccystd = Average value of the standard deviation of body acceleration in th
 bodyacczmean = Average value of the body acceleration in the z direction
 
 bodyacczstd = Average value of the standard deviation of body acceleration in the z direction
+
 ==================
 
 =================
+
 Body Gyroscope Value Mean and STD Averages (units of degrees per second)
+
 ==================
+
 bodygyroxmean = Average value of the body gyroscope value in the x direction
 
 bodygyroxstd = Average value of the standard deviation of body gyroscope value in the x direction
@@ -39,11 +45,15 @@ bodygyroystd = Average value of the standard deviation of body gyroscope value i
 bodygyrozmean = Average value of the body gyroscope value in the z direction
 
 bodygyrozstd = Average value of the standard deviation of body gyroscope value in the z direction
+
 ==================
 
 =================
+
 Total Body Acceleration Mean and STD Averages (units of g)
+
 ==================
+
 totalaccxmean = Average value of the total acceleration in the x direction
 
 totalaccxstd = Average value of the standard deviation of total acceleration in the x direction
@@ -55,6 +65,7 @@ totalaccystd = Average value of the standard deviation of total acceleration in 
 totalacczmean = Average value of the total acceleration in the z direction
 
 totalacczstd = Average value of the standard deviation of total acceleration in the z direction
+
 ==================
 
 ## Calculation
