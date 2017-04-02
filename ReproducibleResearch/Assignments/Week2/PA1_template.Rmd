@@ -4,12 +4,12 @@ output:
   html_document:
     keep_md: true
 ---
-```{r global_options, include=FALSE}
+```{r global_options, include=FALSE, }
 knitr::opts_chunk$set(options(scipen=999))
 ```
 
 ## Loading and preprocessing the data
-```{r echo=FALSE}
+```{r include=FALSE}
 library(dplyr)
 library(ggplot2)
 ```

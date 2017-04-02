@@ -122,14 +122,6 @@ $(document).ready(function () {
 
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>Loading and preprocessing the data</h2>
-<pre><code>## 
-## Attaching package: 'dplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
 <p>Load the dataset. Create copy without rows that don’t a step count (steps = NA):</p>
 <pre class="r"><code>dataset &lt;- read.csv(unz(&quot;activity.zip&quot;, &quot;activity.csv&quot;),na.strings = &quot;NA&quot;)
 dataset_noNA &lt;- dataset[!is.na(dataset$steps),]

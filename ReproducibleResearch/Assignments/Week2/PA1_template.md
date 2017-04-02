@@ -3,22 +3,6 @@
 
 ## Loading and preprocessing the data
 
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
 Load the dataset. Create copy without rows that don't a step count (steps = NA):
 
 ```r
