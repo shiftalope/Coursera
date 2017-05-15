@@ -19,6 +19,7 @@ library(ggplot2)
 Part 1 of this report contains a study of the properties of sampling from an exponential function, $f(x) = \lambda{e}^{-\lambda x}$, $(x \geq 0)$, where $\lambda$ specifies the rate parameter. Such a distribution has a mean and standard deviation of $1/\lambda$. These theoretical values will be compared to the mean and variance of a 40-draw sample to the theoretical mean. Additionally, the distribution created by many 40-draw samples will be compared with a normal distribution.
 
 ###Part 2
+Part 2 of this report studys the Tooth Growth data set, which contains measumrents of tooth growth in guinea pigs who were given various doses of two supplements (either OJ or Vitamin C). Some exploratory analysis is performed before developing and testing hypotheses on the effects that the supplement type and dosage has on tooth growth.
 
 ##Part 0: Set the Seed
 First, a seed is selected for the random number generator so that this work is reproducible. Any number would do, but using Leonhard Euler's birthday (15 April, 1707) seemed like an appropriate choice:
@@ -89,7 +90,8 @@ curve(dnorm(x, mean = fitParams[["mu",1]], sd = fitParams[["sigma",1]] ), col = 
 The histogram and overlayed fit to a normal distribution show that the distribution of 40-draw sample means closely approximates a normal distribution with **mean = `r fitParams[["mu", 1]]`** and **sigma = `r fitParams[["sigma", 1]]`**. These values should be compared with the theoretical values of **$1/\lambda = \boldsymbol{5}$** and **$1/\lambda * 1/\sqrt{40} \approx \boldsymbol{0.79}$** for the mean and standard deviation respectively.
 
 ##Part 2: Basic Inferential Data Analysis
-
+###Intial Exploratory Analysis
+To begin studying this dataset, a summary of what it contains must be made:
 ```{r}
 head(ToothGrowth)
 summary(ToothGrowth$len)
@@ -97,8 +99,35 @@ levels(ToothGrowth$supp)
 as.numeric(levels(as.factor(ToothGrowth$dose)))
 qplot(x=as.factor(dose), y=len, data=ToothGrowth, facets=~supp, xlab="Dose [mg]", ylab="Tooth Length [mm]") +
   geom_boxplot(aes(fill = as.factor(dose))) +
-  scale_fill_discrete(name="Dose (mg)")
+  scale_fill_discrete(name="Dose [mg]")
 ```
+
+From this initial exploratory analyis, 2 testable hypothoses can be made: that Orange Juice is more effective than Vitamin C and that higher doses in either case are more effective.
+ 
+###Hypothesis Testing
+
+To test hypothesis 1, that OJ is more effective than Vitamin C, a t-test is performed by subsetting the data by supplement and comparing the two groups:
+```{r}
+groupOJ <- ToothGrowth[ToothGrowth$supp=="OJ",1]
+groupVC <- ToothGrowth[ToothGrowth$supp=="VC",1]
+testResults <- t.test(groupOJ, groupVC, alternative="greater")
+```
+
+The p-value for such a test is **`r testResults$p.value`** which, being less than 0.05, means we can reject the null hypothesis that OJ and VC have the same effect on tooth growth with 95% confidence.
+
+A similar test can be performed on hypothesis 2, to see the effect that dosage has on growth. First, subsets of the data are made and t.tests are made comparing the different dosages:
+
+```{r}
+group0p5 <- ToothGrowth[ToothGrowth$dose==0.5,1]
+group1 <- ToothGrowth[ToothGrowth$dose==1,1]
+group2 <- ToothGrowth[ToothGrowth$dose==2,1]
+test_0p5v1 <- t.test(group1, group0p5, alternative="greater")
+test_1v2 <- t.test(group2, group1, alternative="greater")
+```
+
+The p-value comparing doses of 0.5 mg and 1 mg is **`r test_0p5v1$p.value`** and the p-value comparing doses of 1 mg and 2 mg is **`r test_1v2$p.value`**. Both of these tests show a clear indication that the null hypothesis (that dose does not affect tooth growth) is rejected at 95% confidence, since both p-values are well below the required 0.05.
+
+In conclusion, the data supports the conclusion that Orange Juice and Vitamin C does not have the same effect in general, and in fact, that OJ is more effective. Additionally, the data supports the conclusion that higher dosages do not produce the same effects, but instead, in the range studies, a higher dosage is more effective.
 
 
 
